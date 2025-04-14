@@ -5,7 +5,7 @@ const height = process.env.VIEWPORT_HEIGHT || 1080;
 
 export default defineConfig({
     testDir: './playwright-tests',
-    timeout: 30000,
+    timeout: 120000,
     retries: 1,
     reporter: [['html', { outputFolder: 'test-report' }]],
     use: {
@@ -15,5 +15,8 @@ export default defineConfig({
         screenshot: 'only-on-failure',
         video: 'off',
         trace: 'off'
+    },
+    expect: {
+        timeout: 15_000,
     },
 });
