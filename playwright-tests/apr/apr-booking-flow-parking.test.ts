@@ -12,6 +12,9 @@ test.describe("APR Booking Flows", ()=> {
         const basePage = new BasePage(page);
         const homePage = new HomePage(page);
         const searchResultPage = new SearchResultPage(page, context);
+        const userDetails = await basePage.getFakeUserDetails();
+
+        /** Test **/
 
         await basePage.openPage('https://airportparkingreservations.com/');
         await basePage.acceptCookies();
@@ -20,11 +23,14 @@ test.describe("APR Booking Flows", ()=> {
         await homePage.submitSearch();
 
         await searchResultPage.waitSearchResultsLoaded();
-        // call here to get newPage as context of ProductDetailPage
+        // call here to get a new page as context of ProductDetailPage
         const productDetailPage = await searchResultPage.selectProduct();
         // to pass existing context into CheckoutPage
         const checkoutPage = await productDetailPage.reserveParking();
-        await checkoutPage.testFunction();
+
+        await checkoutPage.enterEmailAndContinue(userDetails.email);
+        await checkoutPage.enterPersonalDetails(userDetails);
+        await checkoutPage.fillInCCPaymentDetails();
     })
 
 })

@@ -18,6 +18,7 @@ export default class ProductDetailPage extends BasePage {
         await this.reserveParkingBtn.click();
         await this.reserveModalContinueBtn.click();
         await this.reserveModalCheckoutBtn.click();
+        await expect(this.reserveModalCheckoutBtn).not.toBeVisible();
 
         return new CheckoutPage(this.page);
     }
