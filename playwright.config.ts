@@ -7,7 +7,13 @@ export default defineConfig({
     testDir: './playwright-tests',
     timeout: 120000,
     retries: 1,
-    reporter: [['html', { outputFolder: 'test-report' }]],
+    reporter: [ ["line"],
+        [
+        "allure-playwright",
+        {
+            resultsDir: "allure-results",
+        },
+    ]],
     use: {
         browserName: 'chromium',
         viewport: { width: Number(width), height: Number(height) },

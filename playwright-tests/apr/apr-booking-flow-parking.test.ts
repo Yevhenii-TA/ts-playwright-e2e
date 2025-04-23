@@ -1,6 +1,6 @@
-import {test} from "@playwright/test";
+import { test } from "@playwright/test";
 import HomePage from "../../page-objects/apr/HomePage";
-import {APR_LOCATIONS} from "../../fixtures/apr/airports";
+import { APR_LOCATIONS } from "../../fixtures/apr/airports";
 import BasePage from "../../page-objects/BasePage";
 import SearchResultPage from "../../page-objects/apr/SearchResultPage";
 
